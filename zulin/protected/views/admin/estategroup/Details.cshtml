@@ -1,0 +1,55 @@
+﻿@model UIMain.Models.base_estatemodel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Details</title>
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/themes/base/admin2.css")"/>
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/themes/base/style.css")"/>
+</head>
+<body>
+
+    <div id="contentWrap">
+        <!--表格控件 -->
+        <div id="widget table-widget">
+            <div class="pageTitle">品牌管理-详情</div>
+            <div class="title">
+                <div class="yhgl_content" style="height: auto;">
+                    @using (Html.BeginForm("Details", "base_estate", new { urlStr = string.Format(ViewData["urlstring"] != null ? ViewData["urlstring"].ToString() : "") }, FormMethod.Post, new { id = "form1", enctype = "multipart/form-data" }))
+                    { 
+                        <input type="hidden" name="urlstring" value="@ViewData["urlstring"]" />
+                        @Html.ValidationSummary(true);
+                        <table width="80%" border="0" cellspacing="0" cellpadding="5" align="center" class="biaoge_ne bbbh">
+                            <tr>
+                                <td colspan="4" class="bmfw_title">品牌管理-修改
+                                </td>
+                            </tr>
+                            <tr style="height: 45px;">
+                                <td align="right" style="width: 150px;"></td>
+                                <td style="padding-left: 20px;">
+                                    <input type="hidden" name="publish" id="publish" />
+                                    <input type="submit" style="width: 80px; height: 30px;" value="保存" onclick="$('#publish').val(0);"/>
+                                    &nbsp;&nbsp;&nbsp; @*@Html.ActionLink("返回主页", "Index")*@<input type="button" value="返回主页" style="width: 80px; height: 30px;" onclick="history.go(-1);" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" style="width: 150px;"></td>
+                                <td style="color: Red">
+                                    @Html.ValidationMessage("err")
+                                </td>
+                            </tr>
+
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- #widget -->
+    </div>
+</body>
+</html>
